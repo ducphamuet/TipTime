@@ -12,18 +12,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.calculateBtn.setOnClickListener{ calculateTip() }
+        binding.calculateButton.setOnClickListener{ calculateTip() }
     }
 
     private fun calculateTip() {
-        val cost = binding.costOfService.text.toString().toDoubleOrNull()
+        val cost = binding.costOfServiceEditText.text.toString().toDoubleOrNull()
         if (cost == null) {
             binding.tipResult.text = ""
             return
         }
         val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
-            R.id.amazing_btn -> 0.20
-            R.id.good_btn -> 0.18
+            R.id.option_twenty_percent -> 0.20
+            R.id.option_eighteen_percent -> 0.18
             else -> 0.15
         }
         var tip = cost * tipPercentage
